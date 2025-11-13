@@ -237,12 +237,8 @@ public class SistemaBancarioTest {
 <hr>
 
 
-### 7 - Diagrama de Classes UML
-<div style="background-color: rgba(22, 44, 37, 1); padding: 10px; border: 2px solid rgba(0, 236, 146, 1); border-radius: 10px; margin-bottom: 30px">
-      <img src="https://raw.githubusercontent.com/KauanDomingues/bertoti/refs/heads/main/engenhariadesoftware/image-2.png" alt="colmeia-modelo-logico"style="filter: invert(1);">
-</div>
-
-<h style="background-color: rgba(22, 44, 37, 1); padding: 10px; z-index: -1; border-radius: 20px; border: 2px solid rgba(0, 236, 146, 1); border-bottom: none; margin-left: 20px;">
+### 7 - Outro Exemplo de Diagramas
+<img width="798" height="555" alt="image" src="https://github.com/user-attachments/assets/ec1f47f3-86e1-4cbb-8822-0f3b4bd3ee29" />
 
 <hr>
 
