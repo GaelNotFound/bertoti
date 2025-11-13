@@ -1,25 +1,44 @@
-# Atividades Bertoti
-
-1. Engenharia de software implica mais na aplicação de conhecimentos teóricos de construçaõ de software do que a programação em si. Conforme o desenvolvimento de softwares evolui, devemos criar métodos e padrões de engenharia mais rigorosos para garantir a segurança e confiabilidade.
-
-
-2. O parágrafo reflete sobre a engenharia de software, e apresennta princípios para garantir a organização dos códigos, sendo: <b>Tempo e Mudança:</b> Como o código precisará se adaptar ao longo de sua vida, <b>Escala e Crescimento:</b> Como a organização precisará se adaptar à medida que evolui, <b>Compensações e Custos:</b> Como a organização toma decisões, com base nas lições de Tempo e Mudança, e Escala e Crescimento.
+# Atividade | Engenharia de Software – Bertoti
+<hr>
 
 
-3. A) Desempenho vs. Legibilidade do Código  
-   Explicação: Melhorar o desempenho pode resultar em código mais difícil de entender, o que torna a manutenção mais difícil.
+### 1 - Primeiro trecho do livro "Software Engineering at Google" – Oreilly
 
-   B) 2. Velocidade de Desenvolvimento vs. Qualidade do Código   
-   Explicação: Entregar rapidamente pode sacrificar a qualidade do código, como testes e boas práticas, o que aumenta o risco de erros.
+O parágrafo diz que "programação", "Ciencias da computação" e "Engenharia de software" são termos que rotulam formações e trabalhos parecidos. Porém a engenharia de software tem um peso adicional em seu nome por ter a parte da engenharia, que normalmente é comparada com outros cursos, como engenharia mecanica, engenharia civil, engenharia aeronáutica, etc, e acontece que o produto desenvolvido na área de programação não é tão tangível em comparação com os outros cursos. Ele termina dizendo que quando mais o software se aprofunda em seu desenvolvimento, mais rigoroso é a expectativa da eficiencia e segurança em seu resultado.
 
-   C) 3. Escalabilidade vs. Simplicidade  
-   Explicação: Soluções escaláveis exigem mais complexidade, mas tornam o sistema mais preparado para crescer. Soluções simples podem não suportar o aumento de usuários ou dados.
+<hr>
 
 
-4. Diagrama de Classes UML
+### 2 - Segundo trecho do livro "Software Engineering at Google" – Oreilly
+
+O segundo trecho enfatiza diversas perguntas sobre o suposto principal papel da engenharia de software: A construção, manutenção e organização do código em longo prazo, afim de manter seu valor. É dito que não se tem uma resposta ainda, porém adiciona mais ao perguntar sobre quais práticas o programador deve ter para deixar seus códigos sustantáveis, de uma maneira que ele consiga reagir aos ciclos de desenvolvimento, sem sofrer depreciação.
+
+<hr>
+
+
+### 3 - Exemplos de Tradeoffs
+
+<b>A) Desempenho vs. Legibilidade do Código</b>  
+<b>.....Explicação:</b> Melhorar o desempenho pode resultar em código mais difícil de entender, o que torna a manutenção mais difícil.
+
+<b>B) Velocidade de Desenvolvimento vs. Qualidade do Código</b>  
+<b>.....Explicação:</b> Entregar rapidamente pode sacrificar a qualidade do código, como testes e boas práticas, o que aumenta o risco de erros.
+
+<b>C) Escalabilidade vs. Simplicidade</b>  
+<b>.....Explicação:</b> Soluções escaláveis exigem mais complexidade, mas tornam o sistema mais preparado para crescer. Soluções simples podem não suportar o aumento de usuários ou dados.
+
+<hr>
+
+
+### 4 - Diagrama de Classes UML
+
 <img src="https://github.com/DanielDPereira/bertoti/blob/main/Engenharia%20de%20Software%20I/diagramaClassesUML2808.png?raw=true"/>
 
-5. Java:
+<hr>
+
+
+### 5 - Java
+
 ```java
 import java.util.ArrayList;
 import java.util.List;
@@ -173,7 +192,11 @@ public class SistemaBancario {
 }
 
 ```
-6. Testes:
+
+<hr>
+
+### 6 - Testes
+
 ```
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -211,14 +234,20 @@ public class SistemaBancarioTest {
 
 ```
 
-7. Diagrama de Classes UML
-</h>
+<hr>
+
+
+### 7 - Diagrama de Classes UML
 <div style="background-color: rgba(22, 44, 37, 1); padding: 10px; border: 2px solid rgba(0, 236, 146, 1); border-radius: 10px; margin-bottom: 30px">
       <img src="https://raw.githubusercontent.com/KauanDomingues/bertoti/refs/heads/main/engenhariadesoftware/image-2.png" alt="colmeia-modelo-logico"style="filter: invert(1);">
 </div>
 
 <h style="background-color: rgba(22, 44, 37, 1); padding: 10px; z-index: -1; border-radius: 20px; border: 2px solid rgba(0, 236, 146, 1); border-bottom: none; margin-left: 20px;">
-8. Java
+
+<hr>
+
+
+### 8 - Java
 </h>
 <div style="background-color: rgba(22, 44, 37, 1); padding: 35px; border: 2px solid rgba(0, 236, 146, 1); border-radius: 10px; margin-bottom: 30px; overflow-x: auto;">
 
@@ -312,8 +341,11 @@ public class SistemaBancarioTest {
 </div>
 
 <h style="background-color: rgba(22, 44, 37, 1); padding: 10px; z-index: -1; border-radius: 20px; border: 2px solid rgba(0, 236, 146, 1); border-bottom: none; margin-left: 20px;">
-9.Testes Automatizados
-</h>
+
+<hr>
+
+
+### 9 - Testes Automatizados
 <div style="background-color: rgba(22, 44, 37, 1); padding: 30px; border: 2px solid rgba(0, 236, 146, 1); border-radius: 10px; margin-bottom: 30px">
 
 <div>
