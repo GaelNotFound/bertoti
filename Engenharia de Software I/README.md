@@ -1,292 +1,363 @@
-1. Comentário sobre o primeiro trecho:
+# Atividades Bertoti
 
-  O trecho fala que engenharia de software vai além de programar, sendo sobre aplicar conhecimentos teóricos para criar sistemas confiáveis e seguros. À medida que o software cresce, é preciso organizar o código de forma a ser adaptável e escalável ao longo do tempo, levando em conta os custos e as mudanças.
+1. Engenharia de software implica mais na aplicação de conhecimentos teóricos de construçaõ de software do que a programação em si. Conforme o desenvolvimento de softwares evolui, devemos criar métodos e padrões de engenharia mais rigorosos para garantir a segurança e confiabilidade.
 
-2. Comentário sobre o segundo trecho:
 
-  O segundo trecho menciona 3 trade-offs:
+2. O parágrafo reflete sobre a engenharia de software, e apresennta princípios para garantir a organização dos códigos, sendo: <b>Tempo e Mudança:</b> Como o código precisará se adaptar ao longo de sua vida, <b>Escala e Crescimento:</b> Como a organização precisará se adaptar à medida que evolui, <b>Compensações e Custos:</b> Como a organização toma decisões, com base nas lições de Tempo e Mudança, e Escala e Crescimento.
 
-  Desempenho vs. Legibilidade: Melhorar o desempenho pode deixar o código mais difícil de entender.
 
-  Velocidade de Desenvolvimento vs. Qualidade: Fazer rápido pode afetar a qualidade do código, com mais chances de erro.
+3. A) Desempenho vs. Legibilidade do Código  
+   Explicação: Melhorar o desempenho pode resultar em código mais difícil de entender, o que torna a manutenção mais difícil.
 
-  Escalabilidade vs. Simplicidade: Tornar o sistema escalável pode aumentar a complexidade, enquanto soluções simples podem não suportar o crescimento.
+   B) 2. Velocidade de Desenvolvimento vs. Qualidade do Código   
+   Explicação: Entregar rapidamente pode sacrificar a qualidade do código, como testes e boas práticas, o que aumenta o risco de erros.
 
-3. Exemplos de trade-offs:
+   C) 3. Escalabilidade vs. Simplicidade  
+   Explicação: Soluções escaláveis exigem mais complexidade, mas tornam o sistema mais preparado para crescer. Soluções simples podem não suportar o aumento de usuários ou dados.
 
-  Desempenho vs. Consumo de Recursos: Melhorar o desempenho pode aumentar o uso de memória ou processamento.
 
-  Desenvolvimento Rápido vs. Arquitetura Robusta: Entregar rápido pode prejudicar a estrutura do sistema, que ficará difícil de manter a longo prazo.
+4. Diagrama de Classes UML
+<img src="https://github.com/DanielDPereira/bertoti/blob/main/Engenharia%20de%20Software%20I/diagramaClassesUML2808.png?raw=true"/>
 
-  Flexibilidade vs. Controle: Tornar o sistema flexível pode dificultar o controle sobre aspectos como segurança ou desempenho.
-
-4. Diagrama de classe UML
-
-   <img width="2816" height="1536" src="https://github.com/user-attachments/assets/6650a657-6fdb-4d1b-bdb4-8605620854c4" />
 5. Java:
+```java
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-/**
- * Classe Livro
- */
-class Livro {
-    private int idLivro;
-    private String titulo;
-    private String autor;
-    private double preco;
-
-    public Livro(int idLivro, String titulo, String autor, double preco) {
-        this.idLivro = idLivro;
-        this.titulo = titulo;
-        this.autor = autor;
-        this.preco = preco;
-    }
-
-    // Getters
-    public int getIdLivro() { return idLivro; }
-    public String getTitulo() { return titulo; }
-    public String getAutor() { return autor; }
-    public double getPreco() { return preco; }
-
-    @Override
-    public String toString() {
-        return "Livro{" +
-               "id=" + idLivro +
-               ", titulo='" + titulo + '\'' +
-               ", preco=" + String.format("%.2f", preco) +
-               '}';
-    }
-}
-
-/**
- * Classe ItemPedido
- */
-class ItemPedido {
-    private Livro livro;
-    private int quantidade;
-    private double precoUnitario;
-
-    public ItemPedido(Livro livro, int quantidade) {
-        this.livro = livro;
-        this.quantidade = quantidade;
-        this.precoUnitario = livro.getPreco(); // Preço no momento da compra
-    }
-
-    // Getters
-    public Livro getLivro() { return livro; }
-    public int getQuantidade() { return quantidade; }
-    public double getPrecoUnitario() { return precoUnitario; }
-
-    // Método para calcular o subtotal do item
-    public double calcularSubtotal() {
-        return this.quantidade * this.precoUnitario;
-    }
-
-    @Override
-    public String toString() {
-        return "ItemPedido{" +
-               "livro=" + livro.getTitulo() +
-               ", quantidade=" + quantidade +
-               ", subtotal=" + String.format("%.2f", calcularSubtotal()) +
-               '}';
-    }
-}
-
-/**
- * Classe Pagamento
- */
-class Pagamento {
-    private int idPagamento;
-    private Date data;
-    private double valor;
-    private String metodo; // Ex: "Cartão de Crédito", "Boleto"
-
-    public Pagamento(int idPagamento, double valor, String metodo) {
-        this.idPagamento = idPagamento;
-        this.data = new Date(); // Data atual
-        this.valor = valor;
-        this.metodo = metodo;
-    }
-
-    public void confirmarPagamento() {
-        System.out.println("Pagamento de R$ " + String.format("%.2f", valor) + " via " + metodo + " confirmado.");
-    }
-
-    @Override
-    public String toString() {
-        return "Pagamento{" +
-               "id=" + idPagamento +
-               ", data=" + data +
-               ", valor=" + String.format("%.2f", valor) +
-               ", metodo='" + metodo + '\'' +
-               '}';
-    }
-}
-
-/**
- * Classe Pedido
- */
-class Pedido {
-    private int idPedido;
-    private Date data;
-    private String status;
-    private Cliente cliente;
-    private List<ItemPedido> itens;
-    private List<Pagamento> pagamentos;
-
-    public Pedido(int idPedido, Cliente cliente) {
-        this.idPedido = idPedido;
-        this.cliente = cliente;
-        this.data = new Date();
-        this.status = "Aguardando Pagamento";
-        this.itens = new ArrayList<>();
-        this.pagamentos = new ArrayList<>();
-    }
-    
-    // Getters
-    public int getIdPedido() { return idPedido; }
-    public List<ItemPedido> getItens() { return itens; }
-    public String getStatus() { return status; }
-
-    // Métodos de negócio
-    public void adicionarItem(Livro livro, int quantidade) {
-        ItemPedido novoItem = new ItemPedido(livro, quantidade);
-        this.itens.add(novo
-6. // Salve este arquivo como "SistemaVendas.java"
-
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
-/**
- * Classe Livro
- * Representa um livro com suas informações básicas.
- */
-class Livro {
-    private int idLivro;
-    private String titulo;
-    private String autor;
-    private double preco;
+public class SistemaBancario {
 
-    public Livro(int idLivro, String titulo, String autor, double preco) {
-        this.idLivro = idLivro;
-        this.titulo = titulo;
-        this.autor = autor;
-        this.preco = preco;
+    // Classe Cliente
+    static class Cliente {
+        private String nome;
+        private String cpf;
+        private List<ContaBancaria> contas;
+
+        public Cliente(String nome, String cpf) {
+            this.nome = nome;
+            this.cpf = cpf;
+            this.contas = new ArrayList<>();
+        }
+
+        public void abrirConta(ContaBancaria conta) {
+            contas.add(conta);
+            System.out.println("Conta aberta para " + nome + " com sucesso.");
+        }
+
+        public void fecharConta(ContaBancaria conta) {
+            if (contas.contains(conta)) {
+                contas.remove(conta);
+                System.out.println("Conta fechada com sucesso.");
+            } else {
+                System.out.println("Conta não encontrada.");
+            }
+        }
+
+        public List<ContaBancaria> getContas() {
+            return contas;
+        }
     }
 
-    // Getters
-    public int getIdLivro() { return idLivro; }
-    public String getTitulo() { return titulo; }
-    public String getAutor() { return autor; }
-    public double getPreco() { return preco; }
+    // Classe ContaBancaria
+    static class ContaBancaria {
+        private String numeroConta;
+        private double saldo;
+        private String tipo;
 
-    @Override
-    public String toString() {
-        return "Livro{" +
-               "id=" + idLivro +
-               ", titulo='" + titulo + '\'' +
-               ", preco=" + String.format("%.2f", preco) +
-               '}';
+        public ContaBancaria(String numeroConta, String tipo) {
+            this.numeroConta = numeroConta;
+            this.saldo = 0.0;
+            this.tipo = tipo;
+        }
+
+        public void depositar(double valor) {
+            if (valor > 0) {
+                saldo += valor;
+                System.out.println("Depósito de " + valor + " realizado com sucesso.");
+            } else {
+                System.out.println("Valor inválido para depósito.");
+            }
+        }
+
+        public void sacar(double valor) {
+            if (valor <= saldo && valor > 0) {
+                saldo -= valor;
+                System.out.println("Saque de " + valor + " realizado com sucesso.");
+            } else {
+                System.out.println("Saldo insuficiente ou valor inválido.");
+            }
+        }
+
+        public void transferir(ContaBancaria contaDestino, double valor) {
+            if (valor <= saldo && valor > 0) {
+                this.saldo -= valor;
+                contaDestino.depositar(valor);
+                System.out.println("Transferência de " + valor + " realizada com sucesso.");
+            } else {
+                System.out.println("Saldo insuficiente ou valor inválido.");
+            }
+        }
+
+        public double getSaldo() {
+            return saldo;
+        }
+
+        public String getNumeroConta() {
+            return numeroConta;
+        }
+
+        public String getTipo() {
+            return tipo;
+        }
+    }
+
+    // Classe Transacao
+    static class Transacao {
+        private String tipo;
+        private double valor;
+        private String data;
+        private ContaBancaria contaOrigem;
+        private ContaBancaria contaDestino;
+
+        public Transacao(String tipo, double valor, ContaBancaria contaOrigem, ContaBancaria contaDestino) {
+            this.tipo = tipo;
+            this.valor = valor;
+            this.contaOrigem = contaOrigem;
+            this.contaDestino = contaDestino;
+            this.data = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
+        }
+
+        public void registrar() {
+            System.out.println("Transação registrada: ");
+            System.out.println("Tipo: " + tipo);
+            System.out.println("Valor: " + valor);
+            System.out.println("Data: " + data);
+            if (contaOrigem != null) {
+                System.out.println("Conta Origem: " + contaOrigem.getNumeroConta());
+            }
+            if (contaDestino != null) {
+                System.out.println("Conta Destino: " + contaDestino.getNumeroConta());
+            }
+        }
+    }
+
+    // Método main para rodar o sistema
+    public static void main(String[] args) {
+        // Criando clientes
+        Cliente cliente1 = new Cliente("João Silva", "123.456.789-00");
+
+        // Criando contas bancárias
+        ContaBancaria conta1 = new ContaBancaria("12345", "Corrente");
+        ContaBancaria conta2 = new ContaBancaria("67890", "Poupança");
+
+        // Abrindo contas para o cliente
+        cliente1.abrirConta(conta1);
+        cliente1.abrirConta(conta2);
+
+        // Depositando dinheiro nas contas
+        conta1.depositar(1000);
+        conta2.depositar(500);
+
+        // Realizando transações
+        conta1.sacar(200);
+        conta1.transferir(conta2, 300);
+
+        // Registrando transações
+        Transacao t1 = new Transacao("Saque", 200, conta1, null);
+        t1.registrar();
+
+        Transacao t2 = new Transacao("Transferência", 300, conta1, conta2);
+        t2.registrar();
     }
 }
 
-/**
- * Classe ItemPedido
- * Representa a relação entre um Pedido e um Livro.
- */
-class ItemPedido {
-    private Livro livro;
-    private int quantidade;
-    private double precoUnitario;
+```
+6. Testes:
+```
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    public ItemPedido(Livro livro, int quantidade) {
-        this.livro = livro;
-        this.quantidade = quantidade;
-        this.precoUnitario = livro.getPreco(); // Preço no momento da compra
+import org.junit.jupiter.api.Test;
+
+public class SistemaBancarioTest {
+
+    @Test
+    void testDeposito() {
+        SistemaBancario.ContaBancaria conta = new SistemaBancario.ContaBancaria("12345", "Corrente");
+        conta.depositar(1000);
+        assertEquals(1000, conta.getSaldo());
     }
 
-    // Getters
-    public Livro getLivro() { return livro; }
-    public int getQuantidade() { return quantidade; }
-    public double getPrecoUnitario() { return precoUnitario; }
-
-    // Método para calcular o subtotal do item
-    public double calcularSubtotal() {
-        return this.quantidade * this.precoUnitario;
+    @Test
+    void testSaque() {
+        SistemaBancario.ContaBancaria conta = new SistemaBancario.ContaBancaria("12345", "Corrente");
+        conta.depositar(1000);
+        conta.sacar(200);
+        assertEquals(800, conta.getSaldo());
     }
 
-    @Override
-    public String toString() {
-        return "ItemPedido{" +
-               "livro=" + livro.getTitulo() +
-               ", quantidade=" + quantidade +
-               ", subtotal=" + String.format("%.2f", calcularSubtotal()) +
-               '}';
-    }
-}
+    @Test
+    void testTransferencia() {
+        SistemaBancario.ContaBancaria conta1 = new SistemaBancario.ContaBancaria("12345", "Corrente");
+        SistemaBancario.ContaBancaria conta2 = new SistemaBancario.ContaBancaria("67890", "Poupança");
 
-/**
- * Classe Pagamento
- * Representa um pagamento associado a um pedido.
- */
-class Pagamento {
-    private int idPagamento;
-    private Date data;
-    private double valor;
-    private String metodo; // Ex: "Cartão de Crédito", "Boleto"
+        conta1.depositar(1000);
+        conta1.transferir(conta2, 300);
 
-    public Pagamento(int idPagamento, double valor, String metodo) {
-        this.idPagamento = idPagamento;
-        this.data = new Date(); // Data atual
-        this.valor = valor;
-        this.metodo = metodo;
-    }
-
-    public void confirmarPagamento() {
-        System.out.println("Pagamento de R$ " + String.format("%.2f", valor) + " via " + metodo + " confirmado.");
-    }
-
-    @Override
-    public String toString() {
-        return "Pagamento{" +
-               "id=" + idPagamento +
-               ", data=" + data +
-               ", valor=" + String.format("%.2f", valor) +
-               ", metodo='" + metodo + '\'' +
-               '}';
+        assertEquals(700, conta1.getSaldo()); // saldo da conta origem
+        assertEquals(300, conta2.getSaldo()); // saldo da conta destino
     }
 }
 
-/**
- * Classe Pedido
- * A classe central que une clientes, livros e pagamentos.
- */
-class Pedido {
-    private int idPedido;
-    private Date data;
-    private String status;
-    private Cliente cliente;
-    private List<ItemPedido> itens;
-    private List<Pagamento> pagamentos;
+```
 
-    public Pedido(int idPedido, Cliente cliente) {
-        this.idPedido = idPedido;
-        this.cliente = cliente;
-        this.data = new Date();
-        this.status = "Aguardando Pagamento";
-        this.itens = new ArrayList<>();
-        this.pagamentos = new ArrayList<>();
-    }
-    
-    // Getters
-    public int getIdPedido() { return idPedido; }
-    public List<ItemPedido> getItens() { return itens; }
-    public String getStatus() { return status; }
+7. Diagrama de Classes UML
+</h>
+<div style="background-color: rgba(22, 44, 37, 1); padding: 10px; border: 2px solid rgba(0, 236, 146, 1); border-radius: 10px; margin-bottom: 30px">
+      <img src="https://raw.githubusercontent.com/KauanDomingues/bertoti/refs/heads/main/engenhariadesoftware/image-2.png" alt="colmeia-modelo-logico"style="filter: invert(1);">
+</div>
 
-    // Métodos de negócio
-    public void adicionarItem(Livro livro, int quantidade) {
-        ItemPedido novoItem = new ItemPedido(livro, quantidade);
-        this.itens.add(novo)
+<h style="background-color: rgba(22, 44, 37, 1); padding: 10px; z-index: -1; border-radius: 20px; border: 2px solid rgba(0, 236, 146, 1); border-bottom: none; margin-left: 20px;">
+8. Java
+</h>
+<div style="background-color: rgba(22, 44, 37, 1); padding: 35px; border: 2px solid rgba(0, 236, 146, 1); border-radius: 10px; margin-bottom: 30px; overflow-x: auto;">
+
+<div style="display: inline-flex; flex-wrap: no-wrap; gap: 10px;">
+<div style="width: 70vw;">
+
+      public class Obra {
+
+            private String titulo;
+            private String autor;
+            private List<Integer> avaliacoes = new ArrayList<>();
+            private double avaliacoesMedia;
+
+            // Construtor
+            public Obra(String titulo, String autor) {
+                  this.titulo = titulo;
+                  this.autor = autor;
+            }
+
+            // Getters e Setters
+            public String getTitulo() { return titulo; }
+            public void setTitulo(String titulo) { this.titulo = titulo; }
+
+            public String getAutor() { return autor; }
+            public void setAutor(String autor) { this.autor = autor; }
+
+            public List<Integer> getAvaliacoes() { return avaliacoes; }
+            public void setAvaliacoes(List<Integer> avaliacoes) { this.avaliacoes = avaliacoes; }
+
+            public double getAvaliacoesMedia() { return avaliacoesMedia; }
+            public void setAvaliacoesMedia(double avaliacoesMedia) { this.avaliacoesMedia = avaliacoesMedia; }
+
+            // Adiciona nova avaliação e atualiza média
+            public void adicionarAvaliacao(int novaAvaliacao) {
+                  avaliacoes.add(novaAvaliacao);
+                  setAvaliacoesMedia(atualizarAvaliacoesMedia());
+            }
+
+            // Calcula a média das avaliações
+            public double atualizarAvaliacoesMedia() {
+                  double soma = 0.0;
+                  for (int num : avaliacoes) {
+                        soma += num;
+                  }
+                  return soma / avaliacoes.size();
+            }
+      }
+</div>
+
+<div>
+
+<div style="width: 70vw;">    
+
+      public class Critico {
+            private String nome;
+            
+            public Critico(String nome){this.nome = nome;}
+
+            public void avaliarObra(Obra obra, int avaliacao){obra.adicionarAvaliacao(avaliacao);}
+      }
+</div>
+
+<div style="width: 70vw">
+
+      public class Museu {
+            private String nome;
+            private List<Obra> obras= new ArrayList<>();
+            private double estrelas = 0.0;
+
+            public String getNome() {return nome;}
+            public void setNome(String nome) {this.nome = nome;}
+
+            public List<Obra> getObras() {return obras;}
+            public void setObras(List<Obra> obras) {this.obras = obras;}
+
+            public double getEstrelas() {return estrelas;}
+            public void setEstrelas(double estrelas) {this.estrelas = estrelas;}
+
+            public Museu(String nome) {this.nome = nome;}
+
+            public void adicionarObra(Obra obra){obras.add(obra);}
+
+            public void atualizarEstrelas(){
+                  double avaliacoesMedia = this.obras.stream().mapToDouble(Obra::getAvaliacoesMedia).sum();
+                  setEstrelas(avaliacoesMedia);
+            }
+      }
+</div>
+</div>
+</div>
+</div>
+
+<h style="background-color: rgba(22, 44, 37, 1); padding: 10px; z-index: -1; border-radius: 20px; border: 2px solid rgba(0, 236, 146, 1); border-bottom: none; margin-left: 20px;">
+9.Testes Automatizados
+</h>
+<div style="background-color: rgba(22, 44, 37, 1); padding: 30px; border: 2px solid rgba(0, 236, 146, 1); border-radius: 10px; margin-bottom: 30px">
+
+<div>
+
+      import org.junit.jupiter.api.Test;
+      import static org.junit.jupiter.api.Assertions.assertEquals;
+
+      class MuseuTest {
+            @Test
+            void test(){
+                  Museu museu = new Museu("Museu1");
+
+                  Obra obra1 = new Obra("Obra1", "Autor1");
+                  Obra obra2 = new Obra("Obra2", "Autor2");
+                  Obra obra3 = new Obra("Obra3", "Autor3");
+
+                  museu.adicionarObra(obra1);
+                  museu.adicionarObra(obra2);
+                  museu.adicionarObra(obra3);
+
+                  Critico critico1 = new Critico("Critico1");
+                  Critico critico2 = new Critico("Critico2");
+                  Critico critico3 = new Critico("Critico3");
+
+                  critico1.avaliarObra(obra1, 4);
+                  critico1.avaliarObra(obra2, 1);
+                  critico1.avaliarObra(obra3, 5);
+                  critico2.avaliarObra(obra1, 4);
+                  critico2.avaliarObra(obra2, 5);
+                  critico2.avaliarObra(obra3, 5);
+                  critico3.avaliarObra(obra1, 1);
+                  critico3.avaliarObra(obra2, 2);
+                  critico3.avaliarObra(obra3, 5);
+
+                  museu.atualizarEstrelas();
+
+                  assertEquals(3.0, obra1.getAvaliacoesMedia());
+                  assertEquals(8.0/3, obra2.getAvaliacoesMedia());
+                  assertEquals(5.0, obra3.getAvaliacoesMedia());
+                  assertEquals(32.0/3, museu.getEstrelas());
+            }
+      }
+</div>
+
+
+</div>
+
